@@ -7,5 +7,20 @@
 </ion-header>
 
 <ion-content padding>
-
+  <ion-item>
+    <ion-label floating>Todo title</ion-label>
+    <ion-input type="text"></ion-input>
+    <ion-input placeholder="Enter a title here"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Todo catergory</ion-label>
+    <ion-select [(ngModel)]="category">
+      <ion-option value="Other" selected="true">Female</ion-option>
+      <ion-option value="Shopping">Shopping</ion-option>
+      <ion-option value="Study">Study</ion-option>
+      <ion-option value="Work">Work</ion-option>
+      <ion-option value="Reminder">Reminder</ion-option>
+    </ion-select>
+  </ion-item>
+  <button ion-button block>ADD TODO</button>
 </ion-content>
