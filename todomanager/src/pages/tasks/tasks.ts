@@ -10,6 +10,7 @@ import { Storage } from '@ionic/storage';
 
 export class TasksPage {
   todoTitle: Text;
+  todoCategory: string;
   constructor(
     public navCtrl: NavController,
     public toastCtrl: ToastController,
@@ -23,12 +24,7 @@ export class TasksPage {
     else {
       msg = "TODO added " + this.todoTitle;
       this.storage.ready().then(() => {
-        // set a key/value
-        this.storage.set('name', 'Max');
-        // Or to get a key/value pair
-        // storage.get('age').then((val) => {
-        //   console.log('Your age is', val);
-        // })
+        this.storage.set(this.todoCategory,this.todoTitle);
       });
     }
     let toast = this.toastCtrl.create({
@@ -37,6 +33,4 @@ export class TasksPage {
     });
     toast.present();
   }
-
-
 }
