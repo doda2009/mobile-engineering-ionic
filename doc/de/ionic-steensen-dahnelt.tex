@@ -35,15 +35,19 @@ TODO
 Folgende Schritte wurden durchgeführt, um den ToDo-Manager für ionic umzuschreiben:
 \begin{enumerate}
 	\item Ionic-App mit dem Template \emph{tabs} erstellen
+	\item App in app.components.ts und app.modules.ts entsprechend benennen (anstelle von MyApp)
 	\item Die Standard-Seiten \emph{home}, \emph{about} und \emph{contact} entfernen und die Verknüpfung aus der tabs.ts entfernen
 	\item Die Seiten \emph{task} und \emph{list} hinzufügen (.ts und .html) und in der tabs.ts verknüpfen
 	\item Das HTML-Template für task hinzufügen
 	\item Ein Menü in der app.html hinzufügen und einen entsprechenden Toggle-Button implementieren
+	\item Flag \emph{persistent=true} setzen, damit das Menu nicht nur auf der Root-Page sichtbar ist
 	\item In der app.html die Überschrift \emph{TODOS} hinzufügen
 	\item ToastController in task.ts injecten
 	\item Toast-Ausgabe bei Button-Click implementieren
 	\item Error-Handling implementieren, falls kein Titel für ein ToDo angegeben wurde
 	\item Plugininstallation von cordova-sqlite-storage	
+	\item Ng-Module hinzufügen
+	\item Dependency in task injecten
 \end{enumerate}
 
 \subsection{Laboraufgabe}

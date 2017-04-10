@@ -1,7 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
+import { ToDoManager } from './app.component';
 
 import { ListPage } from '../pages/list/list';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -10,20 +10,23 @@ import { TasksPage } from '../pages/tasks/tasks';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { IonicStorageModule } from '@ionic/storage';
+
 @NgModule({
   declarations: [
-    MyApp,
+    ToDoManager,
     TasksPage,
     ListPage,
     TabsPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp, {tabsPlacement:'top'})
+    IonicModule.forRoot(ToDoManager, {tabsPlacement:'top'}),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    ToDoManager,
     TasksPage,
     ListPage,
     TabsPage
