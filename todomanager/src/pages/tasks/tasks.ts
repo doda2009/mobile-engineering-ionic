@@ -8,19 +8,19 @@ import { ToastController } from 'ionic-angular';
 })
 
 export class TasksPage {
-  todoLabel: Text;
+  todoTitle: Text;
   constructor(
     public navCtrl: NavController,
     public toastCtrl: ToastController) {
   }
   showToast() {
     let msg = "";
-    if(this.todoLabel === undefined)
+    if(this.todoTitle === undefined)
     {
       msg = "Please enter a title"
     }
     else{
-      msg = "TODO added " + this.todoLabel;
+      msg = "TODO added " + this.todoTitle;
     }
     let toast = this.toastCtrl.create({
       message: msg,
