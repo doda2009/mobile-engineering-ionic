@@ -24,6 +24,10 @@ export class TasksPage {
     else {
       msg = "TODO added " + this.todoTitle;
       this.storage.ready().then(() => {
+        if(this.todoCategory === undefined)
+        {
+          this.todoCategory = "Other";
+        }
         this.storage.set(this.todoCategory,this.todoTitle);
       });
     }

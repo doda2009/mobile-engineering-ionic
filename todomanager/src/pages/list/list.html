@@ -8,7 +8,10 @@
 
 <ion-content padding>
   <ion-list inset>
-    <h2 ion-item *ngFor="let title of titles">{{ title }}</h2>
-    <h5 ion-item *ngFor="let category of categories">{{ categories }}</h5>
+    <ion-item>
+      <h2 ion-item *ngFor="let title of titles">{{ title }}
+      <p ion-item *ngFor="let category of categories">{{ categories }}</p>
+      </h2>
+    </ion-item>
   </ion-list>
 </ion-content>
