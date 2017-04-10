@@ -8,11 +8,15 @@ import { ToastController } from 'ionic-angular';
 })
 
 export class TasksPage {
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
+  value: Text;
+  constructor(
+    public navCtrl: NavController,
+    public toastCtrl: ToastController) {
   }
   showToast() {
+    console.log(this.value);
     let toast = this.toastCtrl.create({
-      message: 'TODO added',
+      message: 'TODO added ' + this.value,
       duration: 5000
     });
     toast.present();
