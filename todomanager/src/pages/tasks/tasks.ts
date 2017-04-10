@@ -6,19 +6,11 @@ import { ToastController } from 'ionic-angular';
   selector: 'page-tasks',
   templateUrl: 'tasks.html'
 })
+
 export class TasksPage {
-
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
   }
-
-}
-
-export class MyPage {
-  constructor(public toastCtrl: ToastController) {
-  }
-
-  presentToast() {
+  showToast() {
     let toast = this.toastCtrl.create({
       message: 'TODO added',
       duration: 5000
