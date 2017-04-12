@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+import {SQLite} from "ionic-native";
 
 @Component({
-  selector: 'page-tasks',
+  // selector: 'page-tasks',
   templateUrl: 'tasks.html'
 })
 
 export class TasksPage {
+
+  public database: SQLite;
+  public todos: Array<Object>;
+
   todoTitle: Text;
   todoCategory: string;
   constructor(
