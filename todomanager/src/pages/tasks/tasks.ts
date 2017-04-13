@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
-import {SQLite} from "ionic-native";
+import { SQLite } from '@ionic-native/sqlite';
 
 @Component({
   // selector: 'page-tasks',
