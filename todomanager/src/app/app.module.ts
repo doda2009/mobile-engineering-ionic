@@ -10,8 +10,6 @@ import { TasksPage } from '../pages/tasks/tasks';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-// import { IonicStorageModule } from '@ionic/storage';
-
 @NgModule({
   declarations: [
     ToDoManager,
@@ -22,7 +20,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     IonicModule.forRoot(ToDoManager, {tabsPlacement:'top'}),
-    // IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -1,16 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
-import { SQLite } from '@ionic-native/sqlite';
-
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 @Component({
-  // selector: 'page-tasks',
-  templateUrl: 'tasks.html'
+  templateUrl: 'tasks.html',
+  providers:[SQLite]
 })
 
 export class TasksPage {
-
-  public database: SQLite;
   public todos: Array<Object>;
 
   todoTitle: Text;
@@ -18,7 +15,7 @@ export class TasksPage {
   constructor(
     public navCtrl: NavController,
     public toastCtrl: ToastController,
-    public storage: Storage) {
+    private sqlite: SQLite) {
   }
   showToast() {
     let msg = "";
@@ -27,13 +24,17 @@ export class TasksPage {
     }
     else {
       msg = "TODO added " + this.todoTitle;
-      this.storage.ready().then(() => {
-        if(this.todoCategory === undefined)
-        {
-          this.todoCategory = "Other";
-        }
-        this.storage.set(this.todoCategory,this.todoTitle);
-      });
+
+      this.sqlite.create({
+        name: 'data.db',
+        location: 'default'
+      }).then((db: SQLiteObject) => {
+
+        db.executeSql('CREATE TABLE IF NOT EXISTS todos(id , title, category)', {})
+          .then(() => console.log('Executed SQL'))
+          .catch(e => console.log(e));
+      })
+        .catch(e => console.log(e));
     }
     let toast = this.toastCtrl.create({
       message: msg,
