@@ -6,12 +6,12 @@ The main tasks are
 2. create a task for the class
 
 ## Running todomanager
-It's required that node, npmm and ionic are already installed.
+It's required that node, npm and ionic are already installed.
 1. Clone repository
 2. `cd into/todomanager`
 3. `npm install`
 4. `ionic serve`
 
 ## Build todomanager
-1. ionic platform add android
-2. ionic build android
+1. `ionic platform add android`
+2. `ionic build android`
