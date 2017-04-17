@@ -7,11 +7,11 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list inset>
-    <ion-item>
-      <h2 ion-item *ngFor="let title of titles">{{ title }}
-      <p ion-item *ngFor="let category of categories">{{ categories }}</p>
-      </h2>
+  <ion-list>
+    <ion-item *ngFor="let todo of todos">
+      <ion-label> {{ todo.id }} {{ todo.title }} ({{todo.category}})</ion-label>
+      <ion-checkbox (click)="myChange(todo.id);"></ion-checkbox>
     </ion-item>
   </ion-list>
+  <button ion-button block (click)='refresh();'>refresh</button>
 </ion-content>
