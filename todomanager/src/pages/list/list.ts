@@ -4,19 +4,18 @@ import { ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 @Component({
-    selector: 'page-about',
     templateUrl: 'list.html'
 })
 
 export class ListPage {
 
-    public todos: Array<{ id: number, title: string, category: string }>=[];
+    private todos: Array<{ id: number, title: string, category: string }>=[];
+    private selected_filter: string = "All";
 
     constructor(
         public navCtrl: NavController,
         public toastCtrl: ToastController,
         private storage: Storage) {
-        this.refresh();
     }
 
     ionViewWillEnter() {
@@ -24,9 +23,26 @@ export class ListPage {
     }
 
     refresh(){
+        this.todos = [];
         this.storage.ready().then(() => {
+            this.storage.get('filter').then((val) => {
+                if(val != null){
+                    this.selected_filter = val;
+                }
+                else{
+                  this.selected_filter = "All"
+                }
+            });
+
             this.storage.get('todos').then((val) => {
-                this.todos = JSON.parse(val);
+                var temp_todos: Array<{ id: number, title: string, category: string }> = [];
+                temp_todos = JSON.parse(val);
+                for(let i = 0; i < temp_todos.length; i++) {
+                    var todo = temp_todos[i];
+                    if(todo.category == this.selected_filter || this.selected_filter == "All"){
+                        this.todos.push(todo);
+                    }
+                }
             });
         });
     }
@@ -56,5 +72,5 @@ export class ListPage {
         });
         toast.present();
     }
-
+    
 }

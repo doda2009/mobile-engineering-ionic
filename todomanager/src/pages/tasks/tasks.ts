@@ -8,22 +8,23 @@ import { Storage } from '@ionic/storage';
 })
 
 export class TasksPage {
-    public todos: Array<{ id: number, title: string, category: string }>=[];
+
+    private todos: Array<{ id: number, title: string, category: string }>=[];
     todoTitle: Text;
     todoCategory: string;
 
+    next_id: number = 0;
     constructor(
         public navCtrl: NavController,
         public toastCtrl: ToastController,
         private storage: Storage) {
-
-        console.log("storage");
         this.storage.ready().then(() => {
-            console.log("ready");
             this.storage.get('todos').then((val) => {
-                console.log(val);
                 if(val!= null){
                     this.todos = JSON.parse(val);
+                    for(let i = 0; i < this.todos.length; i++) {
+                        this.next_id = Math.max(this.next_id, this.todos[i].id);
+                    }
                 }
                 else{
                     this.todos = [];
@@ -44,8 +45,8 @@ export class TasksPage {
     }
 
     add(title, category ) {
-        console.log("add: ", title);
-        this.todos.push({id:1, title:title , category:category});
+        this.next_id += 1;
+        this.todos.push({id:this.next_id, title:title , category:category});
         this.storage.ready().then(() => {
             this.storage.set('todos', JSON.stringify(this.todos));
             this.showToast("TODO added " + title);

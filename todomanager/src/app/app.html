@@ -3,8 +3,8 @@
     <ion-title>TODOS</ion-title>
     <ion-buttons end>
       <button ion-button menuToggle>
-    <ion-icon name="menu"></ion-icon>
-  </button>
+        <ion-icon name="menu"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -13,20 +13,15 @@
     <ion-toolbar>
       <ion-title>Filter Categories</ion-title>
     </ion-toolbar>
-  </ion-header>
+  </ion-header >
   <ion-content>
-
-    <ion-list>
-      <p>All</p>
-      <p>Other</p>
-      <p>Shopping</p>
-      <p>Study</p>
-      <p>Work</p>
-      <p>Reminder</p>
+    <ion-list radio-group>
+      <ion-item *ngFor="let filter of filters">
+        <ion-label>{{filter}}</ion-label>
+        <ion-radio (click)="set_filter(filter);" [checked]="filter == selected_filter" ></ion-radio>
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>
-
-
 <ion-nav #categories [root]="rootPage">
-  <!-- <ion-nav [root]="rootPage"></ion-nav> -->
+</ion-nav>
