@@ -19,6 +19,10 @@ export class ListPage {
         this.refresh();
     }
 
+    ionViewWillEnter() {
+        this.refresh();
+    }
+
     refresh(){
         this.storage.ready().then(() => {
             this.storage.get('todos').then((val) => {
