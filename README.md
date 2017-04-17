@@ -9,5 +9,9 @@ The main tasks are
 It's required that node, npmm and ionic are already installed.
 1. Clone repository
 2. `cd into/todomanager`
-3. `npm installl`
+3. `npm install`
 4. `ionic serve`
+
+## Build todomanager
+1. ionic platform add android
+2. ionic build android
